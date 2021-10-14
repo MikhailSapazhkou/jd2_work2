@@ -1,8 +1,9 @@
 package by.academy.it.data;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Ticket {
+public class Ticket implements Serializable {
 
     private String licensePlateNumber;
     private Date date;

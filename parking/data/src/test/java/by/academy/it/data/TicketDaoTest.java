@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -14,7 +15,7 @@ public class TicketDaoTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        ticketDao = new TicketDao();
+        ticketDao = new TicketDao(true);
     }
 
     @org.junit.After
@@ -27,16 +28,17 @@ public class TicketDaoTest {
     }
 
     @Test
-    public void testGetConnection() throws SQLException {
-        Connection con = ticketDao.getConnection();
-        assertNotNull(con);
-        con.close();
-    }
-
-    @Test
-    public void testRealAllTickets() throws SQLException {
-        List<Ticket> ticketList = ticketDao.readAllTickets();
-        assertNotNull(ticketList);
-        assertEquals(1, ticketList.size());
+    public void testSaveNewTicket() throws SQLException {
+        //Given
+        Ticket newTicket = new Ticket();
+        newTicket.setDate(new Date());
+        newTicket.setLicensePlateNumber("1234test");
+        //When
+        ticketDao.saveNewTicket(newTicket);
+        //Then
+        Ticket ticket = ticketDao.readAllTickets().get(0);
+        assertNotNull(ticket);
+        assertEquals("1234test", ticket.getLicensePlateNumber());
+        ticketDao.deleteAll();
     }
 }
