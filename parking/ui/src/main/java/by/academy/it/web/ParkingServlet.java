@@ -1,5 +1,8 @@
 package by.academy.it.web;
 
+import by.academy.it.data.Ticket;
+import by.academy.it.data.TicketDao;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -13,7 +16,20 @@ import java.util.Map;
 @WebServlet(name = "parkingServlet", urlPatterns = "/parking")
 public class ParkingServlet extends HttpServlet {
 
-    private Map<String, Date> map = new HashMap<>();
+    //private Map<String, Date> map = new HashMap<>();
+    private TicketDao ticketDao;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        try {
+            ticketDao = new TicketDao();
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(
+                    "Cannot instantiate TicketDao",
+                    e);
+        }
+    }
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
@@ -25,19 +41,23 @@ public class ParkingServlet extends HttpServlet {
             String number = req.getParameter("number");
             addParkingCookies(resp, number);
             Date currentDate = new Date();
-            if (map.containsKey(number)) {
-                Date startDate = map.remove(number);
+            if (ticketDao.getTicketByNumber(number) != null) {
+                Date startDate = ticketDao.getTicketByNumber(number).getDate();
+                ticketDao.removeByNumber(number);
                 long seconds = (currentDate.getTime() - startDate.getTime())/1000;
                 writer.println("You stayed in our parking:");
                 writer.println(seconds + " seconds");
             } else {
-                map.put(number, currentDate);
+                Ticket ticket = new Ticket();
+                ticket.setLicensePlateNumber(number);
+                ticket.setDate(currentDate);
+                ticketDao.saveNewTicket(ticket);
                 writer.println("Welcome to our Parking!");
                 writer.println(currentDate);
             }
             writer.println("Car Number: " + number);
             session.setAttribute("number", number);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

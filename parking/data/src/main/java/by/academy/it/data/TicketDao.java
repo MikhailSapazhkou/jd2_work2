@@ -33,11 +33,27 @@ public class TicketDao {
         return ticketList;
     }
 
+    public Ticket getTicketByNumber(String licensePlateNumber) throws SQLException {
+        Connection con = dataSource.getConnection();
+        PreparedStatement st = con.prepareStatement("SELECT * FROM tickets WHERE car_number=?");
+        st.setString(1, licensePlateNumber);
+        ResultSet rs = st.executeQuery();
+        Ticket ticket = null;
+        if (rs.next()) {
+            ticket = new Ticket();
+            ticket.setLicensePlateNumber(rs.getString("car_number"));
+            ticket.setDate(rs.getTimestamp("ticket_date"));
+        }
+        con.close();
+        st.close();
+        return ticket;
+    }
+
     public void saveNewTicket(Ticket ticket) throws SQLException {
         Connection con = dataSource.getConnection();
         String sql = "INSERT INTO tickets VALUES (?, ?)";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
-        preparedStatement.setDate(1, new Date(ticket.getDate().getTime()));
+        preparedStatement.setTimestamp(1, new Timestamp(ticket.getDate().getTime()));
         preparedStatement.setString(2, ticket.getLicensePlateNumber());
         preparedStatement.executeUpdate();
         preparedStatement.close();
@@ -47,6 +63,14 @@ public class TicketDao {
     public void deleteAll() throws SQLException {
         Connection connection = dataSource.getConnection();
         connection.prepareStatement("TRUNCATE TABLE tickets").execute();
+        connection.close();
+    }
+
+    public void removeByNumber(String number) throws SQLException {
+        Connection connection = dataSource.getConnection();
+        connection.prepareStatement(
+                "DELETE FROM tickets where car_number='" + number + "' "
+        ).execute();
         connection.close();
     }
 }

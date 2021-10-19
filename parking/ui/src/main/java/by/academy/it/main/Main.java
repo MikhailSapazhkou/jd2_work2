@@ -3,10 +3,12 @@ package by.academy.it.main;
 import by.academy.it.controller.Printer;
 import by.academy.it.data.Ticket;
 
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
-        Printer printer = new Printer();
-        Ticket ticket = printer.printTicket("A1020-7 AA", "2021-09-25 21:20:00");
-        System.out.println(ticket);
+        Date date = new Date();
+        System.out.println(date);
+        System.out.println(new java.sql.Date(date.getTime()));
     }
 }
