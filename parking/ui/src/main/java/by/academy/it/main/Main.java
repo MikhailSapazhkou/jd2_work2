@@ -1,8 +1,5 @@
 package by.academy.it.main;
 
-import by.academy.it.controller.Printer;
-import by.academy.it.data.Ticket;
-
 import java.util.Date;
 
 public class Main {
