@@ -14,4 +14,11 @@
         </sql>
     </changeSet>
 
+    <changeSet id="2" author="averamkovich">
+        <sql>
+            ALTER TABLE tickets ADD COLUMN id int NOT NULL;
+            ALTER TABLE tickets ADD PRIMARY KEY (id);
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>

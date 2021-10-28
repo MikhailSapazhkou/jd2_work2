@@ -1,13 +1,13 @@
 package by.academy.it.data;
 
+import by.academy.it.pojo.Ticket;
 import org.junit.Test;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class TicketDaoTest {
 

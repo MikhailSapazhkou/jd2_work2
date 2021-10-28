@@ -1,7 +1,7 @@
 package by.academy.it.controller;
 
-import by.academy.it.data.Ticket;
 import by.academy.it.data.TicketDao;
+import by.academy.it.pojo.Ticket;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
