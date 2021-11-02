@@ -21,4 +21,16 @@
         </sql>
     </changeSet>
 
+    <changeSet id="3" author="averamkovich">
+        <sql>
+            CREATE TABLE IF NOT EXISTS persons (
+            name varchar(100) NOT NULL,
+            second_name varchar(100) NOT NULL,
+            id int(11) NOT NULL,
+            PRIMARY KEY (id)
+            );
+        </sql>
+    </changeSet>
+
+
 </databaseChangeLog>
