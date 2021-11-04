@@ -2,6 +2,7 @@ package by.academy.it.data;
 
 import by.academy.it.pojo.Person;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.io.Serializable;
@@ -9,8 +10,18 @@ import java.util.List;
 
 public class PersonDao {
 
+    private final SessionFactory sessionFactory;
+
+    public PersonDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public PersonDao() {
+        this(SessionFactoryHolder.getSessionFactory());
+    }
+
     public Serializable savePerson(Person person) {
-        Session session = SessionFactoryHolder.getSession();
+        Session session = sessionFactory.openSession();
         Serializable id = null;
         Transaction tr = null;
         try {
@@ -27,7 +38,7 @@ public class PersonDao {
     }
 
     public List<Person> readPersons() {
-        Session session = SessionFactoryHolder.getSession();
+        Session session = sessionFactory.openSession();
         List<Person> personList =
                 session.createQuery("from Person", Person.class).list();
         session.close();
@@ -35,7 +46,7 @@ public class PersonDao {
     }
 
     public void deletePerson(Person person) {
-        Session session = SessionFactoryHolder.getSession();
+        Session session = sessionFactory.openSession();
         Transaction tr = null;
         try {
             tr = session.beginTransaction();

@@ -12,7 +12,7 @@ public class Person implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "second_name")
+    @Column(name = "second_name", length = 500)
     private String secondName;
 
     @Id

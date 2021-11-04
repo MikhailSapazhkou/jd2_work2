@@ -1,8 +1,13 @@
 package by.academy.it.data;
 
 import by.academy.it.pojo.Person;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.Serializable;
@@ -12,11 +17,23 @@ import static org.junit.Assert.assertEquals;
 
 public class PersonDaoTest {
 
+    static SessionFactory sessionFactory;
     PersonDao personDao;
+
+    @BeforeClass
+    public static void init() {
+        StandardServiceRegistry reg =
+                new StandardServiceRegistryBuilder()
+                        .configure("hibernate.parking.cfg-test.xml") // hibernate-test.cfg.xml
+                        .build();
+        sessionFactory = new MetadataSources(reg)
+                .buildMetadata()
+                .buildSessionFactory();
+    }
 
     @Before
     public void setUp() throws Exception {
-        personDao = new PersonDao();
+        personDao = new PersonDao(sessionFactory);
     }
 
     @After
