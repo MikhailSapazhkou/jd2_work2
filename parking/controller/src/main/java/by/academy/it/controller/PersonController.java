@@ -29,4 +29,8 @@ public class PersonController {
         }
         return validationErrors;
     }
+
+    public List<Person> getAllPersons() {
+        return personDao.readPersons();
+    }
 }

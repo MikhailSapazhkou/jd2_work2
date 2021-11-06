@@ -31,6 +31,7 @@ public class PersonServlet extends HttpServlet {
             List<String> errors =
                     personController.saveNewPerson(person);
             if (errors.isEmpty()) {
+                req.setAttribute("persons", personController.getAllPersons());
                 req.getRequestDispatcher("/persons.jsp").forward(req, resp);
             } else {
                 req.setAttribute("errors", errors);
