@@ -65,6 +65,7 @@ public class MeetingTest extends BaseTest {
         Meeting savedMeeting3 = newSession.get(Meeting.class, mId3);
         assertNotNull(savedMeeting3);
         assertEquals(3, savedMeeting3.getAttendees().size());
+        newSession.close();
     }
 
 }

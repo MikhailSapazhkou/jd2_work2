@@ -17,6 +17,9 @@ public class EmployeeDetails {
     @OneToOne
     private Employee employee;
 
+    public EmployeeDetails() {
+    }
+
     public EmployeeDetails(String address) {
         this.address = address;
     }

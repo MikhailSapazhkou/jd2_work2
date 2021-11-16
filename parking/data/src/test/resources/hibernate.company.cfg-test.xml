@@ -16,5 +16,6 @@
         <mapping class="by.academy.it.company.EmployeeDetails"/>
         <mapping class="by.academy.it.company.Company"/>
         <mapping class="by.academy.it.company.Meeting"/>
+        <mapping class="by.academy.it.company.Payslip"/>
     </session-factory>
 </hibernate-configuration>

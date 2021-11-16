@@ -10,7 +10,7 @@ public class EmployeeDao {
     private SessionFactory sessionFactory;
 
     public EmployeeDao() {
-        sessionFactory = SessionFactoryHolder.getSessionFactoryCompany();
+            sessionFactory = SessionFactoryHolder.getSessionFactoryCompany();
     }
 
 
