@@ -11,6 +11,7 @@ public class SessionFactoryHolder {
     }
 
     private static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactoryCompany;
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
@@ -24,5 +25,19 @@ public class SessionFactoryHolder {
         }
         return sessionFactory;
     }
+
+    public static SessionFactory getSessionFactoryCompany() {
+        if (sessionFactoryCompany == null) {
+            StandardServiceRegistry reg =
+                    new StandardServiceRegistryBuilder()
+                            .configure("hibernate.company.cfg.xml") // hibernate-test.cfg.xml
+                            .build();
+            sessionFactoryCompany = new MetadataSources(reg)
+                    .buildMetadata()
+                    .buildSessionFactory();
+        }
+        return sessionFactoryCompany;
+    }
+
 
 }

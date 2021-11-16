@@ -20,6 +20,9 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Employee> employees;
 
+    public Company() {
+    }
+
     public Company(String companyName) {
         this.companyName = companyName;
     }

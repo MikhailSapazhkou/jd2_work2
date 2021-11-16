@@ -3,6 +3,8 @@ package by.academy.it.company;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "T_EMPLOYEE")
@@ -21,8 +23,23 @@ public class Employee {
     private EmployeeDetails employeeDetails;
 
     @ManyToOne
-    @JoinColumn(name = "COMPANY_ID")
+    @JoinColumn(name = "FK_COMPANY_ID")
     private Company company;
+
+    @ManyToMany
+    @JoinTable(name = "T_EMPLOYEE_MEETINGS",
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "MEETING_ID")
+    )
+    private List<Meeting> meetings = new ArrayList<>();
+
+    public List<Meeting> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(List<Meeting> meetings) {
+        this.meetings = meetings;
+    }
 
     public Employee() {
     }

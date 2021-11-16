@@ -51,7 +51,8 @@ public class EmployeeTest extends BaseTest {
         tr.commit();
 
         //Then
-        Company saved = session.get(Company.class, companyId);
+        Company saved = session.load(Company.class, companyId);
+        session.refresh(saved);
         assertEquals(2, saved.getEmployees().size());
     }
 
