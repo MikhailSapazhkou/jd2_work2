@@ -3,7 +3,9 @@ package by.academy.it.controller;
 import by.academy.it.company.Employee;
 import by.academy.it.company.EmployeeDao;
 import by.academy.it.company.PayslipDao;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmployeeController {
 
     final EmployeeDao employeeDao;
