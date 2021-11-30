@@ -21,7 +21,7 @@ public class PayslipDaoTest extends BaseDbUnitTest {
     @Test
     public void getAnnualSalary() {
         //Given
-        cleanInsert("PayslipDaoTest.xml");
+        cleanInsert("/by/academy/it/company/PayslipDaoTest.xml");
 
         //When
         BigDecimal res = payslipDao.getAnnualSalary("2c9682067d101492017d101495ed0000", (short) 2021);

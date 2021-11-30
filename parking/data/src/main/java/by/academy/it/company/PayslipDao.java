@@ -20,11 +20,15 @@ public class PayslipDao {
 
     public BigDecimal getAnnualSalary(String employeeId, short year) {
         Session session = sessionFactory.openSession();
+        session.getCriteriaBuilder();
+
         final Query query = session.createQuery("SELECT SUM(p.amount) FROM Payslip p " +
                 "WHERE p.employee.id=:employee_id AND p.year=:year");
 
         query.setParameter("employee_id", employeeId);
         query.setParameter("year", year);
+        query.setMaxResults(3);
+        query.setFirstResult(1);
 
         BigDecimal sum = (BigDecimal) query.uniqueResult();
         session.close();

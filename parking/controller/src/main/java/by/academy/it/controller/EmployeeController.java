@@ -2,10 +2,17 @@ package by.academy.it.controller;
 
 import by.academy.it.company.Employee;
 import by.academy.it.company.EmployeeDao;
+import by.academy.it.company.PayslipDao;
 
 public class EmployeeController {
 
-    EmployeeDao employeeDao = new EmployeeDao();
+    final EmployeeDao employeeDao;
+    final PayslipDao payslipDao;
+
+    public EmployeeController(EmployeeDao employeeDao, PayslipDao payslipDao) {
+        this.employeeDao = employeeDao;
+        this.payslipDao = payslipDao;
+    }
 
     public boolean save(Employee employee) {
         //Check employee input value
