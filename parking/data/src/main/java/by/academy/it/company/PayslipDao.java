@@ -27,8 +27,6 @@ public class PayslipDao {
 
         query.setParameter("employee_id", employeeId);
         query.setParameter("year", year);
-        query.setMaxResults(3);
-        query.setFirstResult(1);
 
         BigDecimal sum = (BigDecimal) query.uniqueResult();
         session.close();

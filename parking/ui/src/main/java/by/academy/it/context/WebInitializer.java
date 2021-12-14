@@ -1,11 +1,11 @@
 package by.academy.it.context;
 
-import jakarta.servlet.ServletContainerInitializer;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.ServletContainerInitializer;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import java.util.Set;
 
 public class WebInitializer implements ServletContainerInitializer {
@@ -17,6 +17,8 @@ public class WebInitializer implements ServletContainerInitializer {
         context.register(WebConfiguration.class);
 
         DispatcherServlet servlet =
-                new DispatcherServlet();
+                new DispatcherServlet(context);
+
+        ctx.addServlet("dispatcher", servlet);
     }
 }
