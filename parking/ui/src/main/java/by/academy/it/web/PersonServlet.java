@@ -1,24 +1,23 @@
 package by.academy.it.web;
 
-import by.academy.it.controller.PersonController;
 import by.academy.it.pojo.Person;
+import by.academy.it.service.PersonService;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/person", name = "personServlet")
+//@WebServlet(urlPatterns = "/person", name = "personServlet")
 public class PersonServlet extends HttpServlet {
 
-    private PersonController personController;
+    private PersonService personController;
 
     @Override
     public void init() throws ServletException {
-        personController = new PersonController();
+        personController = new PersonService();
     }
 
     @Override

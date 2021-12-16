@@ -1,26 +1,25 @@
 package by.academy.it.web;
 
-import by.academy.it.controller.TicketController;
+import by.academy.it.service.TicketService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "parkingServlet", urlPatterns = "/parking")
+//@WebServlet(name = "parkingServlet", urlPatterns = "/parking")
 public class ParkingServlet extends HttpServlet {
 
-    private TicketController controller;
+    private TicketService controller;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         try {
-            controller = new TicketController();
+            controller = new TicketService();
         } catch (ClassNotFoundException e) {
             throw new ServletException(e.getMessage(), e);
         }

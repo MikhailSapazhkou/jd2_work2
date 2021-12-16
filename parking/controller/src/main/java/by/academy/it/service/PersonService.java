@@ -1,4 +1,4 @@
-package by.academy.it.controller;
+package by.academy.it.service;
 
 import by.academy.it.data.PersonDao;
 import by.academy.it.pojo.Person;
@@ -6,11 +6,11 @@ import by.academy.it.pojo.Person;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonController {
+public class PersonService {
 
     private PersonDao personDao;
 
-    public PersonController() {
+    public PersonService() {
         personDao = new PersonDao();
     }
 

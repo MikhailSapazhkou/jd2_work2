@@ -1,4 +1,4 @@
-package by.academy.it.controller;
+package by.academy.it.service;
 
 import by.academy.it.config.ControllerSpringConfig;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 public class EmployeeControllerTest {
 
     @Autowired
-    EmployeeController employeeController;
+    EmployeeService employeeController;
 
     @Test
     public void save() {

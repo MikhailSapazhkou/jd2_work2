@@ -1,4 +1,4 @@
-package by.academy.it.controller;
+package by.academy.it.service;
 
 import by.academy.it.data.TicketDao;
 import by.academy.it.pojo.Ticket;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TicketController {
+public class TicketService {
 
     TicketDao ticketDao;
 
-    public TicketController() throws ClassNotFoundException {
+    public TicketService() throws ClassNotFoundException {
         ticketDao = new TicketDao();
     }
 

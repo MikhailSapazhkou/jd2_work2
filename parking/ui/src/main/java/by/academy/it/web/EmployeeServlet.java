@@ -1,7 +1,7 @@
 package by.academy.it.web;
 
 import by.academy.it.company.Employee;
-import by.academy.it.controller.EmployeeController;
+import by.academy.it.service.EmployeeService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class EmployeeServlet extends HttpServlet {
 
-    EmployeeController employeeController = new EmployeeController(null, null);
+    EmployeeService employeeController = new EmployeeService(null, null);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

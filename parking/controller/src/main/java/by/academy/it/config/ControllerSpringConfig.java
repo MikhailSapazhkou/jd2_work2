@@ -2,7 +2,7 @@ package by.academy.it.config;
 
 import by.academy.it.company.EmployeeDao;
 import by.academy.it.company.PayslipDao;
-import by.academy.it.controller.EmployeeController;
+import by.academy.it.service.EmployeeService;
 import by.academy.it.validator.EmployeeValidator;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class ControllerSpringConfig {
     private String defaultWorkingDir;
 
     @Autowired
-    private EmployeeController employeeController;
+    private EmployeeService employeeController;
 
     @Autowired
     @Qualifier("employeeValidatorImpl")
