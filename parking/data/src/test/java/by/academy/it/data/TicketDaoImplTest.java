@@ -9,13 +9,13 @@ import java.util.Date;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class TicketDaoTest {
+public class TicketDaoImplTest {
 
-    TicketDao ticketDao;
+    TicketDaoImpl ticketDaoImpl;
 
     @org.junit.Before
     public void setUp() throws Exception {
-        ticketDao = new TicketDao(true);
+        ticketDaoImpl = new TicketDaoImpl(true);
     }
 
     @org.junit.After
@@ -24,7 +24,7 @@ public class TicketDaoTest {
 
     @Test
     public void testInstance() {
-        assertNotNull(ticketDao);
+        assertNotNull(ticketDaoImpl);
     }
 
     @Test
@@ -34,11 +34,11 @@ public class TicketDaoTest {
         newTicket.setDate(new Date());
         newTicket.setLicensePlateNumber("1234test");
         //When
-        ticketDao.saveNewTicket(newTicket);
+        ticketDaoImpl.saveNewTicket(newTicket);
         //Then
-        Ticket ticket = ticketDao.readAllTickets().get(0);
+        Ticket ticket = ticketDaoImpl.readAllTickets().get(0);
         assertNotNull(ticket);
         assertEquals("1234test", ticket.getLicensePlateNumber());
-        ticketDao.deleteAll();
+        ticketDaoImpl.deleteAll();
     }
 }

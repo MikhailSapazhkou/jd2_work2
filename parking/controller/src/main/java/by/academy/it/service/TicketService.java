@@ -1,19 +1,21 @@
 package by.academy.it.service;
 
-import by.academy.it.data.TicketDao;
+import by.academy.it.data.TicketDaoImpl;
 import by.academy.it.pojo.Ticket;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class TicketService {
 
-    TicketDao ticketDao;
+    TicketDaoImpl ticketDao;
 
     public TicketService() throws ClassNotFoundException {
-        ticketDao = new TicketDao();
+        ticketDao = new TicketDaoImpl();
     }
 
     public List<String> handleTicketRequest(String number, Date currentDate) throws SQLException {

@@ -1,24 +1,27 @@
 package by.academy.it.data;
 
+import by.academy.it.dao.TicketDao;
 import by.academy.it.pojo.Ticket;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-public class TicketDao {
+public class TicketDaoImpl implements TicketDao {
 
     private DataSource dataSource;
 
-    public TicketDao() throws ClassNotFoundException {
+    public TicketDaoImpl() throws ClassNotFoundException {
         this(false);
     }
 
-    public TicketDao (boolean useTestDataSource) throws ClassNotFoundException {
+    public TicketDaoImpl(boolean useTestDataSource) throws ClassNotFoundException {
         dataSource = new DataSource(useTestDataSource);
 
     }
 
+    @Override
     public List<Ticket> readAllTickets() throws SQLException {
         Connection con = dataSource.getConnection();
         Statement st = con.createStatement();
@@ -35,6 +38,7 @@ public class TicketDao {
         return ticketList;
     }
 
+    @Override
     public Ticket getTicketByNumber(String licensePlateNumber) throws SQLException {
         Connection con = dataSource.getConnection();
         PreparedStatement st = con.prepareStatement("SELECT * FROM tickets WHERE car_number=?");
@@ -51,6 +55,7 @@ public class TicketDao {
         return ticket;
     }
 
+    @Override
     public void saveNewTicket(Ticket ticket) throws SQLException {
         Connection con = dataSource.getConnection();
         String sql = "INSERT INTO tickets VALUES (?, ?, ?)";
@@ -63,17 +68,24 @@ public class TicketDao {
         con.close();
     }
 
+    @Override
     public void deleteAll() throws SQLException {
         Connection connection = dataSource.getConnection();
         connection.prepareStatement("TRUNCATE TABLE tickets").execute();
         connection.close();
     }
 
+    @Override
     public void removeByNumber(String number) throws SQLException {
         Connection connection = dataSource.getConnection();
         connection.prepareStatement(
                 "DELETE FROM tickets where car_number='" + number + "' "
         ).execute();
         connection.close();
+    }
+
+    @Override
+    public List<Ticket> findByPersonIds(Set<Long> ids) {
+        return null;
     }
 }

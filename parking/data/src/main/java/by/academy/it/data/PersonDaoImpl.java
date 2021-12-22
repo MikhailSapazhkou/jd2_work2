@@ -1,5 +1,6 @@
 package by.academy.it.data;
 
+import by.academy.it.dao.PersonDao;
 import by.academy.it.pojo.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,18 +9,19 @@ import org.hibernate.Transaction;
 import java.io.Serializable;
 import java.util.List;
 
-public class PersonDao {
+public class PersonDaoImpl implements PersonDao {
 
     private final SessionFactory sessionFactory;
 
-    public PersonDao(SessionFactory sessionFactory) {
+    public PersonDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public PersonDao() {
+    public PersonDaoImpl() {
         this(SessionFactoryHolder.getSessionFactory());
     }
 
+    @Override
     public Serializable savePerson(Person person) {
         Session session = sessionFactory.openSession();
         Serializable id = null;
@@ -37,6 +39,7 @@ public class PersonDao {
         return id;
     }
 
+    @Override
     public List<Person> readPersons() {
         Session session = sessionFactory.openSession();
         List<Person> personList =
@@ -45,6 +48,7 @@ public class PersonDao {
         return personList;
     }
 
+    @Override
     public void deletePerson(Person person) {
         Session session = sessionFactory.openSession();
         Transaction tr = null;
@@ -58,6 +62,11 @@ public class PersonDao {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public List<Person> searchByNameAndSecondName(String name, String secondName) {
+        return null;
     }
 
 }

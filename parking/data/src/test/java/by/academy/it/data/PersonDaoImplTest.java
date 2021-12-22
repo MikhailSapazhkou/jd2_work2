@@ -15,10 +15,10 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class PersonDaoTest {
+public class PersonDaoImplTest {
 
     static SessionFactory sessionFactory;
-    PersonDao personDao;
+    PersonDaoImpl personDaoImpl;
 
     @BeforeClass
     public static void init() {
@@ -33,12 +33,12 @@ public class PersonDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        personDao = new PersonDao(sessionFactory);
+        personDaoImpl = new PersonDaoImpl(sessionFactory);
     }
 
     @After
     public void tearDown() throws Exception {
-        personDao = null;
+        personDaoImpl = null;
     }
 
     @Test
@@ -50,12 +50,12 @@ public class PersonDaoTest {
         person.setSecondName("Petrov");
 
         //When
-        Serializable id = personDao.savePerson(person);
+        Serializable id = personDaoImpl.savePerson(person);
 
         //Then
         assertEquals(1001L, id);
-        List<Person> list = personDao.readPersons();
+        List<Person> list = personDaoImpl.readPersons();
         assertEquals(1, list.size());
-        personDao.deletePerson(list.get(0));
+        personDaoImpl.deletePerson(list.get(0));
     }
 }
