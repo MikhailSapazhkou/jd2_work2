@@ -7,7 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "APP_PARKING_USER")
+@Table(name = "app_parking_users")
 @Getter
 @Setter
 public class AppParkingUser {

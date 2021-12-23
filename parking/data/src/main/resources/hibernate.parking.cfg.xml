@@ -7,6 +7,9 @@
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
         <property name="show_sql">true</property>
+        <mapping class="by.academy.it.pojo.AppParkingUser"/>
         <mapping class="by.academy.it.pojo.Person"/>
+        <mapping class="by.academy.it.pojo.Ticket"/>
+
     </session-factory>
 </hibernate-configuration>
