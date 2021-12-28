@@ -39,18 +39,20 @@ public class PersonService {
         return personDao.readPersons();
     }
 
-    public void addNewUser(AddNewUserCommand command) {
+    public List<String> addNewUser(AddNewUserCommand command) {
         AppParkingUser user = new AppParkingUser();
         Person person = new Person();
 
         person.setName(command.getName());
         person.setSecondName(command.getSecondName());
-        saveNewPerson(person);
+        List<String> errors = saveNewPerson(person);
 
-        user.setPerson(person);
-        user.setAppParkingUserLogin(command.getLogin());
-        user.setGetAppParkingUserPassword(command.getPassword());
-        userDao.saveUser(user);
-
+        if (errors.isEmpty()) {
+            user.setPerson(person);
+            user.setAppParkingUserLogin(command.getLogin());
+            user.setGetAppParkingUserPassword(command.getPassword());
+            userDao.saveUser(user);
+        }
+        return errors;
     }
 }
