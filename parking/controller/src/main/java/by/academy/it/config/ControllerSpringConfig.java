@@ -1,8 +1,10 @@
 package by.academy.it.config;
 
+import by.academy.it.company.CompanyDaoImpl;
 import by.academy.it.company.EmployeeDao;
 import by.academy.it.company.PayslipDao;
 import by.academy.it.dao.AppParkingUserDao;
+import by.academy.it.dao.CompanySearchDao;
 import by.academy.it.dao.PersonDao;
 import by.academy.it.dao.TicketDao;
 import by.academy.it.data.AppParkingUserDaoImpl;
@@ -47,5 +49,10 @@ public class ControllerSpringConfig {
     @Bean
     public PersonDao personDao() {
         return new PersonDaoImpl();
+    }
+
+    @Bean
+    public CompanySearchDao companySearchDao() {
+        return new CompanyDaoImpl();
     }
 }

@@ -66,7 +66,25 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public List<Person> searchByNameAndSecondName(String name, String secondName) {
-        return null;
+        Session session = sessionFactory.openSession();
+        List<Person> personList =
+                session.createQuery("from Person p where p.name=:name and p.secondName=:secondName ", Person.class)
+                        .setParameter("name", name)
+                        .setParameter("secondName", secondName)
+                        .list();
+        session.close();
+        return personList;
+    }
+
+    @Override
+    public List<Person> search(String param) {
+        Session session = sessionFactory.openSession();
+        List<Person> personList =
+                session.createQuery("from Person p where p.name like '%" + param +
+                                "%' or p.secondName like '%" + param + "%' ", Person.class)
+                        .list();
+        session.close();
+        return personList;
     }
 
 }

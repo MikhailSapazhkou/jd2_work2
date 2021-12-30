@@ -26,6 +26,9 @@ public class PersonService {
                 person.getName().isEmpty()) {
             validationErrors.add("Name is empty");
         }
+        if (person.getSecondName() == null || person.getSecondName().isEmpty()) {
+            validationErrors.add("Second name is empty");
+        }
         if (person.getId() == null) {
             person.setId(Math.round(Math.random() * 1000));
         }
@@ -54,5 +57,9 @@ public class PersonService {
             userDao.saveUser(user);
         }
         return errors;
+    }
+
+    public Person findPerson(String name, String secondName) {
+        return personDao.searchByNameAndSecondName(name, secondName).get(0);
     }
 }
