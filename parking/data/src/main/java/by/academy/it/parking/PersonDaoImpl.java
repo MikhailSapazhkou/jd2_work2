@@ -1,25 +1,23 @@
-package by.academy.it.data;
+package by.academy.it.parking;
 
 import by.academy.it.dao.PersonDao;
-import by.academy.it.pojo.Person;
+import by.academy.it.parking.pojo.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
 
+@Repository
 public class PersonDaoImpl implements PersonDao {
 
-    private final SessionFactory sessionFactory;
-
-    public PersonDaoImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public PersonDaoImpl() {
-        this(SessionFactoryHolder.getSessionFactory());
-    }
+    @Autowired
+    @Qualifier("parkingSessionFactory")
+    private SessionFactory sessionFactory;
 
     @Override
     public Serializable savePerson(Person person) {

@@ -1,19 +1,20 @@
 package by.academy.it.company;
 
-import by.academy.it.data.SessionFactoryHolder;
+import by.academy.it.company.pojo.Employee;
+import by.academy.it.dao.EmployeeDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-public class EmployeeDao {
+public class EmployeeDaoImpl implements EmployeeDao {
 
+    @Autowired
+    @Qualifier("companySessionFactory")
     private SessionFactory sessionFactory;
 
-    public EmployeeDao() {
-            sessionFactory = SessionFactoryHolder.getSessionFactoryCompany();
-    }
-
-
+    @Override
     public boolean saveEmployee(Employee employee) {
         Session session = sessionFactory.openSession();
         final Transaction transaction = session.beginTransaction();

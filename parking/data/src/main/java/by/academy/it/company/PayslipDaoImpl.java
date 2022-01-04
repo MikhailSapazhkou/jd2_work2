@@ -1,23 +1,23 @@
 package by.academy.it.company;
 
-import by.academy.it.data.SessionFactoryHolder;
+import by.academy.it.dao.PayslipDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 
-public class PayslipDao {
-    private final SessionFactory sessionFactory;
+@Repository
+public class PayslipDaoImpl implements PayslipDao {
 
-    public PayslipDao() {
-        sessionFactory = SessionFactoryHolder.getSessionFactoryCompany();
-    }
+    @Autowired
+    @Qualifier("companySessionFactory")
+    private SessionFactory sessionFactory;
 
-    public PayslipDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
+    @Override
     public BigDecimal getAnnualSalary(String employeeId, short year) {
         Session session = sessionFactory.openSession();
         session.getCriteriaBuilder();

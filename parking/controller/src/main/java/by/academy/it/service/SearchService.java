@@ -1,11 +1,11 @@
 package by.academy.it.service;
 
-import by.academy.it.company.Company;
-import by.academy.it.company.Employee;
+import by.academy.it.company.pojo.Company;
+import by.academy.it.company.pojo.Employee;
 import by.academy.it.dao.CompanySearchDao;
 import by.academy.it.dao.PersonDao;
 import by.academy.it.dto.SearchResult;
-import by.academy.it.pojo.Person;
+import by.academy.it.parking.pojo.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

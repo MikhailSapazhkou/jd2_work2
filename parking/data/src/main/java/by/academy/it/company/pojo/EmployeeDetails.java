@@ -1,4 +1,4 @@
-package by.academy.it.company;
+package by.academy.it.company.pojo;
 
 import org.hibernate.annotations.GenericGenerator;
 

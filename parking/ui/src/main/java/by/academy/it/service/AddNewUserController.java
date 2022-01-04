@@ -1,7 +1,7 @@
 package by.academy.it.service;
 
 import by.academy.it.dto.AddNewUserCommand;
-import by.academy.it.pojo.Person;
+import by.academy.it.parking.pojo.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

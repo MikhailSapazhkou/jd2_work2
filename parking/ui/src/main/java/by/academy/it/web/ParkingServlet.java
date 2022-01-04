@@ -20,7 +20,7 @@ public class ParkingServlet extends HttpServlet {
         super.init(config);
         try {
             controller = new TicketService();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             throw new ServletException(e.getMessage(), e);
         }
     }

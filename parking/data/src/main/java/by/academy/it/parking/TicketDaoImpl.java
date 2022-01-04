@@ -1,25 +1,23 @@
-package by.academy.it.data;
+package by.academy.it.parking;
 
 import by.academy.it.dao.TicketDao;
-import by.academy.it.pojo.Ticket;
+import by.academy.it.parking.pojo.Ticket;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@Repository
 public class TicketDaoImpl implements TicketDao {
 
+    @Autowired
+    @Qualifier("parkingDataSource")
     private DataSource dataSource;
-
-    public TicketDaoImpl() throws ClassNotFoundException {
-        this(false);
-    }
-
-    public TicketDaoImpl(boolean useTestDataSource) throws ClassNotFoundException {
-        dataSource = new DataSource(useTestDataSource);
-
-    }
 
     @Override
     public List<Ticket> readAllTickets() throws SQLException {
@@ -27,7 +25,7 @@ public class TicketDaoImpl implements TicketDao {
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM tickets");
         List<Ticket> ticketList = new ArrayList<>();
-        while(rs.next()) {
+        while (rs.next()) {
             Ticket ticket = new Ticket();
             ticket.setLicensePlateNumber(rs.getString("car_number"));
             ticket.setDate(rs.getTimestamp("ticket_date"));

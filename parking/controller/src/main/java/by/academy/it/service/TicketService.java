@@ -1,7 +1,8 @@
 package by.academy.it.service;
 
-import by.academy.it.data.TicketDaoImpl;
-import by.academy.it.pojo.Ticket;
+import by.academy.it.dao.TicketDao;
+import by.academy.it.parking.pojo.Ticket;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -12,11 +13,8 @@ import java.util.List;
 @Service
 public class TicketService {
 
-    TicketDaoImpl ticketDao;
-
-    public TicketService() throws ClassNotFoundException {
-        ticketDao = new TicketDaoImpl();
-    }
+    @Autowired
+    TicketDao ticketDao;
 
     public List<String> handleTicketRequest(String number, Date currentDate) throws SQLException {
         List<String> messages = new ArrayList<>();

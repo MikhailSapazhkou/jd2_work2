@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration(classes = ControllerSpringConfig.class)
+@ContextConfiguration(classes = {ControllerSpringConfig.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class EmployeeControllerTest {
 

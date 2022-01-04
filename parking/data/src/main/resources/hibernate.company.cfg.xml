@@ -10,12 +10,12 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
         <property name="show_sql">true</property>
-        <!--<mapping class="by.academy.it.company.Employee"/>-->
+        <!--<mapping class="by.academy.it.company.pojo.Employee"/>-->
         <mapping package="by.academy.it.company"/>
-        <mapping class="by.academy.it.company.Employee"/>
-        <mapping class="by.academy.it.company.EmployeeDetails"/>
-        <mapping class="by.academy.it.company.Company"/>
-        <mapping class="by.academy.it.company.Meeting"/>
-        <mapping class="by.academy.it.company.Payslip"/>
+        <mapping class="by.academy.it.company.pojo.Employee"/>
+        <mapping class="by.academy.it.company.pojo.EmployeeDetails"/>
+        <mapping class="by.academy.it.company.pojo.Company"/>
+        <mapping class="by.academy.it.company.pojo.Meeting"/>
+        <mapping class="by.academy.it.company.pojo.Payslip"/>
     </session-factory>
 </hibernate-configuration>

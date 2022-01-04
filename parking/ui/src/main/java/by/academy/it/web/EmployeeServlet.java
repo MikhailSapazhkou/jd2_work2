@@ -1,6 +1,6 @@
 package by.academy.it.web;
 
-import by.academy.it.company.Employee;
+import by.academy.it.company.pojo.Employee;
 import by.academy.it.service.EmployeeService;
 
 import javax.servlet.ServletException;

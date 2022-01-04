@@ -1,5 +1,8 @@
 package by.academy.it.company;
 
+import by.academy.it.company.pojo.Company;
+import by.academy.it.company.pojo.Employee;
+import by.academy.it.company.pojo.EmployeeDetails;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;

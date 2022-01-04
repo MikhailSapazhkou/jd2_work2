@@ -5,9 +5,9 @@ import by.academy.it.dao.PersonDao;
 import by.academy.it.dao.TicketDao;
 import by.academy.it.dto.SearchTicketCriteria;
 import by.academy.it.dto.SearchTicketResult;
-import by.academy.it.pojo.AppParkingUser;
-import by.academy.it.pojo.Person;
-import by.academy.it.pojo.Ticket;
+import by.academy.it.parking.pojo.AppParkingUser;
+import by.academy.it.parking.pojo.Person;
+import by.academy.it.parking.pojo.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

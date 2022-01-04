@@ -1,6 +1,6 @@
 package by.academy.it.dao;
 
-import by.academy.it.pojo.Ticket;
+import by.academy.it.parking.pojo.Ticket;
 
 import java.sql.SQLException;
 import java.util.List;

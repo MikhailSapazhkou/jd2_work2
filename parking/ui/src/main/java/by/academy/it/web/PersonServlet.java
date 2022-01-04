@@ -1,6 +1,6 @@
 package by.academy.it.web;
 
-import by.academy.it.pojo.Person;
+import by.academy.it.parking.pojo.Person;
 import by.academy.it.service.PersonService;
 
 import javax.servlet.ServletException;

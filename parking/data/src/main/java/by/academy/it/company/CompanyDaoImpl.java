@@ -1,19 +1,21 @@
 package by.academy.it.company;
 
+import by.academy.it.company.pojo.Company;
 import by.academy.it.dao.CompanySearchDao;
-import by.academy.it.data.SessionFactoryHolder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class CompanyDaoImpl implements CompanySearchDao {
 
+    @Autowired
+    @Qualifier("companySessionFactory")
     private SessionFactory sessionFactory;
-
-    public CompanyDaoImpl() {
-        sessionFactory = SessionFactoryHolder.getSessionFactoryCompany();
-    }
 
     @Override
     public List<Company> search(String namePattern) {

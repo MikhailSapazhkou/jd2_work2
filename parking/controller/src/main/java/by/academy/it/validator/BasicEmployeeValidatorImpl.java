@@ -1,6 +1,6 @@
 package by.academy.it.validator;
 
-import by.academy.it.company.Employee;
+import by.academy.it.company.pojo.Employee;
 import org.springframework.stereotype.Component;
 
 @Component

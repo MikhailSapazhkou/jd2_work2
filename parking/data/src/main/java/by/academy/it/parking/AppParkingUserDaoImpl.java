@@ -1,20 +1,22 @@
-package by.academy.it.data;
+package by.academy.it.parking;
 
 import by.academy.it.dao.AppParkingUserDao;
-import by.academy.it.pojo.AppParkingUser;
+import by.academy.it.parking.pojo.AppParkingUser;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class AppParkingUserDaoImpl implements AppParkingUserDao {
 
-    private final SessionFactory sessionFactory;
-
-    public AppParkingUserDaoImpl() {
-        sessionFactory = SessionFactoryHolder.getSessionFactory();
-    }
+    @Autowired
+    @Qualifier("parkingSessionFactory")
+    private SessionFactory sessionFactory;
 
     @Override
     public List<AppParkingUser> searchByAppParkingUserLogin(String login) {

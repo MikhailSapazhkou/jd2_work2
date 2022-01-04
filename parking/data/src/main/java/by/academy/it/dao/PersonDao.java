@@ -1,6 +1,6 @@
 package by.academy.it.dao;
 
-import by.academy.it.pojo.Person;
+import by.academy.it.parking.pojo.Person;
 
 import java.io.Serializable;
 import java.util.List;

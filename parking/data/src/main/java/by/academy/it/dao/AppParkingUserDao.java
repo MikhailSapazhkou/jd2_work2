@@ -1,6 +1,6 @@
 package by.academy.it.dao;
 
-import by.academy.it.pojo.AppParkingUser;
+import by.academy.it.parking.pojo.AppParkingUser;
 
 import java.util.List;
 

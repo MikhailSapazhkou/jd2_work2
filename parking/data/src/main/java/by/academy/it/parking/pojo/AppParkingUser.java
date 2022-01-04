@@ -1,4 +1,4 @@
-package by.academy.it.pojo;
+package by.academy.it.parking.pojo;
 
 import lombok.Getter;
 import lombok.Setter;

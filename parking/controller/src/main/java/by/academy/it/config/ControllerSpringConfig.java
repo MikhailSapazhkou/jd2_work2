@@ -1,15 +1,15 @@
 package by.academy.it.config;
 
 import by.academy.it.company.CompanyDaoImpl;
-import by.academy.it.company.EmployeeDao;
-import by.academy.it.company.PayslipDao;
+import by.academy.it.company.EmployeeDaoImpl;
+import by.academy.it.company.PayslipDaoImpl;
 import by.academy.it.dao.AppParkingUserDao;
 import by.academy.it.dao.CompanySearchDao;
 import by.academy.it.dao.PersonDao;
 import by.academy.it.dao.TicketDao;
-import by.academy.it.data.AppParkingUserDaoImpl;
-import by.academy.it.data.PersonDaoImpl;
-import by.academy.it.data.TicketDaoImpl;
+import by.academy.it.parking.AppParkingUserDaoImpl;
+import by.academy.it.parking.PersonDaoImpl;
+import by.academy.it.parking.TicketDaoImpl;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,8 @@ import org.springframework.context.annotation.PropertySource;
 
 @Getter
 @Configuration("controllerConfiguration")
-@ComponentScan(basePackages = "by.academy.it")
+@ComponentScan(basePackages = {"by.academy.it.service",
+        "by.academy.it.validator"})
 @PropertySource("classpath:/controller.properties")
 public class ControllerSpringConfig {
 
@@ -27,13 +28,13 @@ public class ControllerSpringConfig {
     private String defaultWorkingDir;
 
     @Bean
-    public EmployeeDao employeeDao() {
-        return new EmployeeDao();
+    public EmployeeDaoImpl employeeDao() {
+        return new EmployeeDaoImpl();
     }
 
     @Bean
-    public PayslipDao payslipDao() {
-        return new PayslipDao();
+    public PayslipDaoImpl payslipDao() {
+        return new PayslipDaoImpl();
     }
 
     @Bean

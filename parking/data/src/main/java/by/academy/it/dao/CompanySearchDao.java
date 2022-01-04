@@ -1,6 +1,6 @@
 package by.academy.it.dao;
 
-import by.academy.it.company.Company;
+import by.academy.it.company.pojo.Company;
 
 import java.util.List;
 
