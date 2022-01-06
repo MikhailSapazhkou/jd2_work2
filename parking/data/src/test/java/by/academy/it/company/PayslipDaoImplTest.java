@@ -1,6 +1,6 @@
 package by.academy.it.company;
 
-import by.academy.it.TestDaoConfiguration;
+import by.academy.it.config.TestDaoConfiguration;
 import by.academy.it.dao.PayslipDao;
 import org.junit.After;
 import org.junit.Test;

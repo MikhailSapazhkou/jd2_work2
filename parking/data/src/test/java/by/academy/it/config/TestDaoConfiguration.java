@@ -1,4 +1,4 @@
-package by.academy.it;
+package by.academy.it.config;
 
 import by.academy.it.company.pojo.*;
 import by.academy.it.parking.pojo.AppParkingUser;

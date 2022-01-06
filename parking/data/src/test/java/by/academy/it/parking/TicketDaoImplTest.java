@@ -1,6 +1,6 @@
 package by.academy.it.parking;
 
-import by.academy.it.TestDaoConfiguration;
+import by.academy.it.config.TestDaoConfiguration;
 import by.academy.it.dao.TicketDao;
 import by.academy.it.parking.pojo.Ticket;
 import org.junit.Test;

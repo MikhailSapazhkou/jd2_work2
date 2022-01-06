@@ -1,4 +1,4 @@
-package by.academy.it;
+package by.academy.it.config;
 
 
 import by.academy.it.company.pojo.*;
@@ -23,7 +23,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = "classpath:ds.properties")
-@ComponentScan(basePackages = "by.academy.it")
+@ComponentScan(basePackages = {"by.academy.it.company", "by.academy.it.parking"})
 public class DaoConfiguration {
 
     @Autowired
