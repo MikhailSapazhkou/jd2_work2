@@ -22,6 +22,6 @@ public class WebInitializer implements ServletContainerInitializer {
 
         final ServletRegistration.Dynamic dispatcher = ctx.addServlet("dispatcher", servlet);
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("*.html", "*.do");
+        dispatcher.addMapping("*.html", "*.do", "/");
     }
 }

@@ -8,6 +8,7 @@
         <module>ui</module>
         <module>controller</module>
         <module>data</module>
+        <module>api</module>
     </modules>
     <groupId>by.academy.it</groupId>
     <artifactId>parking</artifactId>

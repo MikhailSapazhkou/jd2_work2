@@ -11,6 +11,8 @@ public interface PersonDao {
 
     List<Person> readPersons();
 
+    Person readPerson(Long id);
+
     void deletePerson(Person person);
 
     List<Person> searchByNameAndSecondName(String name, String secondName);

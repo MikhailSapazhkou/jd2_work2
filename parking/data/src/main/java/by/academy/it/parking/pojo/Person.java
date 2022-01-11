@@ -1,7 +1,7 @@
 package by.academy.it.parking.pojo;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +11,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "persons")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 public class Person implements Serializable {
     @Column(name = "name")
     private String name;

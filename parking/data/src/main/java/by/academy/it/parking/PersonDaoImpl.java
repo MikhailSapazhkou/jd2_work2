@@ -4,15 +4,16 @@ import by.academy.it.dao.PersonDao;
 import by.academy.it.parking.pojo.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Repository
+@Transactional
 public class PersonDaoImpl implements PersonDao {
 
     @Autowired
@@ -20,19 +21,14 @@ public class PersonDaoImpl implements PersonDao {
     private SessionFactory sessionFactory;
 
     @Override
+    @Transactional
     public Serializable savePerson(Person person) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Serializable id = null;
-        Transaction tr = null;
         try {
-            tr = session.beginTransaction();
             id = session.save(person);
-            tr.commit();
         } catch (Exception e) {
-            if (tr != null) tr.rollback();
             e.printStackTrace();
-        } finally {
-            session.close();
         }
         return id;
     }
@@ -47,18 +43,21 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public void deletePerson(Person person) {
+    public Person readPerson(Long id) {
         Session session = sessionFactory.openSession();
-        Transaction tr = null;
+        Person person = session.get(Person.class, id);
+        session.close();
+        return person;
+    }
+
+    @Override
+    @Transactional
+    public void deletePerson(Person person) {
+        Session session = sessionFactory.getCurrentSession();
         try {
-            tr = session.beginTransaction();
             session.delete(person);
-            tr.commit();
         } catch (Exception e) {
-            if (tr != null) tr.rollback();
             e.printStackTrace();
-        } finally {
-            session.close();
         }
     }
 
