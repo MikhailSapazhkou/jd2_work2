@@ -3,6 +3,7 @@ package by.academy.it.service;
 import by.academy.it.dto.AddNewUserCommand;
 import by.academy.it.parking.pojo.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -28,6 +29,7 @@ public class AddNewUserController {
     }
 
     @PostMapping("/add-new-person.do")
+    @Secured("ROLE_ADMIN")
     public ModelAndView addNewUser(@ModelAttribute("addNewUserCommand") AddNewUserCommand addNewUserCommand,
                                    BindingResult result) {
         System.out.println(addNewUserCommand);

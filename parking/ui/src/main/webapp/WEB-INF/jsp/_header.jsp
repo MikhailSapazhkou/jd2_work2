@@ -1,3 +1,4 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,15 +31,23 @@
                 Users
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <security:authorize access="hasRole('ADMIN')">
                 <li><a class="dropdown-item" href="/ui/add-new-user.html">Add new user</a></li>
                 <li><a class="dropdown-item" href="/ui/add-person-photo.html">Add person photo</a></li>
                 <li><hr class="dropdown-divider"></li>
+              </security:authorize>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled">Disabled</a>
             </li>
+            <security:authorize access="isAuthenticated()">
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+            </security:authorize>
+            <security:authorize access="!isAuthenticated()">
+                <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+            </security:authorize>
           </ul>
           <form class="d-flex" action="/ui/search.html">
             <input name="str" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
